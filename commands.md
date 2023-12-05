@@ -12,3 +12,7 @@ npx ts-jest config:init
 
 plugins
 jest runner
+
+
+npm i bcrypt
+npm i -D @types/bcrypt
