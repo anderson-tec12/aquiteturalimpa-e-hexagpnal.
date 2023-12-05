@@ -1,4 +1,4 @@
-import { Collection } from './collection'
+import { Collection } from '../ports/collection'
 
 export default class Base implements Collection{
   itens:any[] = []

@@ -1,13 +1,17 @@
 
-import { Collection } from './collection'
+import { Collection } from '../ports/collection'
+import { ProviderHash } from '../ports/providerHash'
 
 export default class RegisterUser{
 
 
-  constructor(private collection:Collection){}
+  constructor(
+    private collection:Collection,
+    private providerHash:ProviderHash
+  ){}
 
   runner(name:string, email:string, password:string){
-    const secretPassword = password.split('').reverse().join('')
+    const secretPassword = this.providerHash.cript(password)
 
     const user = {
       id: new Date().getTime(),
