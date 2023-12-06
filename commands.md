@@ -16,3 +16,6 @@ jest runner
 
 npm i bcrypt
 npm i -D @types/bcrypt
+
+
+npm i knex pg
