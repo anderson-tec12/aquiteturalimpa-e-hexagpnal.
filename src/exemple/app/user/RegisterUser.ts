@@ -1,6 +1,7 @@
 
 import { Collection } from '../ports/collection'
 import { ProviderHash } from '../ports/providerHash'
+import { UserInterface } from './userInterface'
 
 export default class RegisterUser{
 
@@ -10,14 +11,14 @@ export default class RegisterUser{
     private providerHash:ProviderHash
   ){}
 
-  runner(name:string, email:string, password:string){
+  runner(name:string, email:string, password:string):UserInterface{
     const secretPassword = this.providerHash.cript(password)
 
-    const user = {
-      id: new Date().getTime(),
+    const user:UserInterface = {
+      id: new Date().getTime().toString(),
       name,
-      email,
-      password:secretPassword
+      mail:email,
+      pass:secretPassword
     }
 
 

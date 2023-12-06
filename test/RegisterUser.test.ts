@@ -12,7 +12,7 @@ test('Deve registrar um usuário com criptografia real',() => {
   const user = useCase.runner('Joe', 'joe@zmail.com','123456789')
 
   expect(user).toHaveProperty('id')
-  expect(bcriyptAdapter.decript('123456789', user.password)).toBeTruthy()
+  expect(bcriyptAdapter.decript('123456789', user.pass!)).toBeTruthy()
 })
 
 
@@ -24,5 +24,5 @@ test('Deve registrar um usuário',() => {
   const user = useCase.runner('Joe', 'joe@zmail.com','123456789')
 
   expect(user).toHaveProperty('id')
-  expect(user.password).toEqual('987654321')
+  expect(user.pass).toEqual('987654321')
 })
