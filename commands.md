@@ -19,3 +19,4 @@ npm i -D @types/bcrypt
 
 
 npm i knex pg
+npm i dotenv
