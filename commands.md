@@ -20,3 +20,6 @@ npm i -D @types/bcrypt
 
 npm i knex pg
 npm i dotenv
+
+
+ npm run migrate:make criar_tabela_usuario

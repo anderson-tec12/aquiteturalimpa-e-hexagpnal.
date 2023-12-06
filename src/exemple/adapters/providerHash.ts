@@ -1,4 +1,5 @@
-import { ProviderHash } from '../ports/providerHash';
+import { ProviderHash } from '../app/ports/providerHash'
+
 
 export class HashProvider implements ProviderHash{
   decript(pass: string, passCript: string): boolean {

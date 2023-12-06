@@ -1,6 +1,7 @@
 import {genSaltSync, hashSync, compareSync} from 'bcrypt';
+import { ProviderHash } from '../../app/ports/providerHash';
 
-import { ProviderHash } from '../../ports/providerHash';
+
 
 export class BCRYPT_ADAPTER implements ProviderHash{
   cript(pass: string): string {
