@@ -22,4 +22,7 @@ npm i knex pg
 npm i dotenv
 
 
- npm run migrate:make criar_tabela_usuario
+npm run migrate:make criar_tabela_usuario
+
+npm i uuid
+npm i -D @types/uuid

@@ -2,7 +2,7 @@
 import { Collection } from '../ports/collection'
 import { ProviderHash } from '../ports/providerHash'
 import { UserInterface } from './userInterface'
-
+import {ID} from '../shared/id'
 export default class RegisterUser{
 
 
@@ -15,7 +15,7 @@ export default class RegisterUser{
     const secretPassword = this.providerHash.cript(password)
 
     const user:UserInterface = {
-      id: new Date().getTime().toString(),
+      id: ID.render(),
       name,
       mail:email,
       pass:secretPassword
