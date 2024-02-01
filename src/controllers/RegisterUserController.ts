@@ -7,6 +7,8 @@ export default class RegisterUserController{
     private registerUser:RegisterUser
   ){
     server.post('/user', async (req, res) => {
+
+      console.log(req.body)
       await  registerUser.runner(
         req.body.name,
         req.body.mail,

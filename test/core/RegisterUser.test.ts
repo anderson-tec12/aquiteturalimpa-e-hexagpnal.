@@ -1,7 +1,7 @@
-import RegisterUser from '../src/core/user/RegisterUser'
-import Base from '../src/adapters/base';
-import {HashProvider} from '../src/adapters/providerHash'
-import {BCRYPT_ADAPTER} from '../src/adapters/Auth/bcript'
+import RegisterUser from '../../src/core/user/RegisterUser'
+import Base from '../../src/adapters/base';
+import {HashProvider} from '../../src/adapters/providerHash'
+import {BCRYPT_ADAPTER} from '../../src/adapters/Auth/bcript'
 
 
 test('Deve registrar um usuário com criptografia real',async () => {

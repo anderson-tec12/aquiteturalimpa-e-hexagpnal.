@@ -8,6 +8,7 @@ export class KNEX_collectionUserDB implements UserCollection{
   }
 
   async searchUserWithMail(email: string): Promise<UserInterface | null> {
-    return await connection.table('user').where('email', email).first()
+
+    return await connection.table('users').where('mail', email).first()
   }
 }
