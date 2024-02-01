@@ -19,11 +19,20 @@ app.get('/test', (req, res) => {
   res.json({status:true})
 } )
 
+// Open routes ---------------------------
+
 const userCollection = new KNEX_collectionUserDB()
 const providerHash = new HashProvider()
 const registerUser = new RegisterUser(userCollection, providerHash)
 
 new RegisterUserController(app, registerUser)
+
+// Close routes -------------------------
+
+
+
+
+// Server listen
 
 const port = process.env.PORT ?? 3001
 app.listen(port, () => {
