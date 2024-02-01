@@ -1,5 +1,5 @@
-import { UserCollection } from '../../../app/user/UserCollection';
-import { UserInterface } from '../../../app/user/userInterface';
+import { UserCollection } from '../../../core/user/UserCollection';
+import { UserInterface } from '../../../core/user/userInterface';
 import { connection } from './connection';
 
 export class KNEX_collectionUserDB implements UserCollection{
