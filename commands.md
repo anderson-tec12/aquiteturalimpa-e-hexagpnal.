@@ -17,6 +17,8 @@ jest runner
 npm i bcrypt
 npm i -D @types/bcrypt
 
+npm i express jsonwebtoken
+npm i -D @types/express @types/jsonwebtoken axios @types/axios
 
 npm i knex pg
 npm i dotenv
