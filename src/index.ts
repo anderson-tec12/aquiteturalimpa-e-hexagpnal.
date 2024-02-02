@@ -6,6 +6,8 @@ import RegisterUserController from './controllers/RegisterUserController';
 import RegisterUser from './core/user/RegisterUser';
 import { KNEX_collectionUserDB } from './adapters/DB/knex/knexCollection';
 import { HashProvider } from './adapters/providerHash';
+import LoginUserController from './controllers/LoginUserController';
+import LoginUser from './core/user/LoginUser';
 
 const app = express()
 
@@ -24,8 +26,11 @@ app.get('/test', (req, res) => {
 const userCollection = new KNEX_collectionUserDB()
 const providerHash = new HashProvider()
 const registerUser = new RegisterUser(userCollection, providerHash)
+const loginUser = new LoginUser(userCollection, providerHash)
+
 
 new RegisterUserController(app, registerUser)
+new LoginUserController(app,loginUser)
 
 // Close routes -------------------------
 
