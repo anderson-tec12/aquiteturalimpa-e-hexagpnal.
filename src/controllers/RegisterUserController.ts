@@ -7,15 +7,17 @@ export default class RegisterUserController{
     private registerUser:RegisterUser
   ){
     server.post('/user', async (req, res) => {
+      try{
+        await  registerUser.runner(
+          req.body.name,
+          req.body.mail,
+          req.body.pass
+        )
 
-      console.log(req.body)
-      await  registerUser.runner(
-        req.body.name,
-        req.body.mail,
-        req.body.pass
-      )
-
-      res.status(201).send()
+        res.status(201).send()
+      }catch(err:any){
+        res.status(400).send(err.message)
+      }
     })
   }
 }

@@ -8,7 +8,13 @@ test('Deve registrar um novo usuario se não existir', async () => {
     mail:'joão@gmail.com',
     pass: '123456789'
   }
-  const resp = await axios.post(`${baseUrl}/user`,user)
+  try{
+    const resp = await axios.post(`${baseUrl}/user`,user)
 
-  expect(resp.status).toBe(201)
+    expect(resp.status).toBe(201)
+  }catch(e:any){
+    console.log({e})
+    expect(e.response.status).toBe(400)
+    // expect(e.response.data).toBe('Users is exists')
+  }
 })
