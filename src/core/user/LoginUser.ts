@@ -4,6 +4,7 @@ import { ProviderHash } from '../ports/providerHash'
 import { UserInterface } from './userInterface'
 import {ID} from '../shared/id'
 import UserCase from '../shared/userCase'
+import TokenProvider from './Token'
 
 type entry = {
   email:string,
@@ -18,7 +19,8 @@ export default class LoginUser implements UserCase<entry, exitInterface>{
 
   constructor(
     private collection:UserCollection,
-    private providerHash:ProviderHash
+    private providerHash:ProviderHash,
+    private providerToken: TokenProvider
   ){}
 
   async runner({email,password}:entry):Promise<exitInterface>{
@@ -41,7 +43,11 @@ export default class LoginUser implements UserCase<entry, exitInterface>{
         ...user,
         pass:undefined
       },
-      token:''
+      token: this.providerToken.build({
+        id: user.id,
+        name: user.mail,
+        mail:user.mail
+      })
     }
   }
 }

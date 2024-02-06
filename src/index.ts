@@ -8,6 +8,7 @@ import { KNEX_collectionUserDB } from './adapters/DB/knex/knexCollection';
 import { HashProvider } from './adapters/providerHash';
 import LoginUserController from './controllers/LoginUserController';
 import LoginUser from './core/user/LoginUser';
+import { JwtAdpter } from './adapters/Auth/jwToken';
 
 const app = express()
 
@@ -23,10 +24,11 @@ app.get('/test', (req, res) => {
 
 // Open routes ---------------------------
 
+const providerToken = new JwtAdpter(process.env.SECRET!)
 const userCollection = new KNEX_collectionUserDB()
 const providerHash = new HashProvider()
 const registerUser = new RegisterUser(userCollection, providerHash)
-const loginUser = new LoginUser(userCollection, providerHash)
+const loginUser = new LoginUser(userCollection, providerHash, providerToken)
 
 
 new RegisterUserController(app, registerUser)

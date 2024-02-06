@@ -27,10 +27,10 @@ test('Deve fazer login ', async () => {
   }
   try{
     const resp = await axios.post(`${baseUrl}/userLogin`,user)
-    console.log({resp})
+
     expect(resp.status).toBe(200)
   }catch(e:any){
-    console.log({e})
+
     expect(e.response.status).toBe(403)
     // expect(e.response.data).toBe('Users is exists')
   }
