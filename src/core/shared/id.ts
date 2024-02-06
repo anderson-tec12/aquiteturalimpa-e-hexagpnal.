@@ -3,7 +3,7 @@
   biblioteca externa.
 
   A maneira correta é criar uma interface de entrada e um adpter que a implemnte
-  pois se amanha seha nescessario troca de biblioteca seja mais facil a troca de biblioteca
+  pois se amanha seja nescessario troca de biblioteca seja mais facil a troca de biblioteca
   externas
 */
 

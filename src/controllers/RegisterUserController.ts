@@ -9,9 +9,11 @@ export default class RegisterUserController{
     server.post('/user', async (req, res) => {
       try{
         await  registerUser.runner(
-          req.body.name,
-          req.body.mail,
-          req.body.pass
+          {
+            name:req.body.name,
+            email:req.body.mail,
+            password:req.body.pass
+          }
         )
 
         res.status(201).send()

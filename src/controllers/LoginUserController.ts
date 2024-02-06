@@ -8,13 +8,15 @@ export default class LoginUserController{
   ){
     server.post('/userLogin', async (req, res) => {
       try{
-       const user =  await  loginUser.runner(
-          req.body.mail,
-          req.body.pass
+       const userLogin =  await  loginUser.runner(
+          {
+            email:req.body.mail,
+            password:req.body.pass
+          }
         )
 
-        delete user.pass
-        res.status(200).json(user)
+        delete userLogin.user.pass
+        res.status(200).json(userLogin)
       }catch(err:any){
         res.status(403).send('Email or pass incorrect')
       }

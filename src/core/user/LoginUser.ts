@@ -3,15 +3,25 @@ import { UserCollection } from './UserCollection'
 import { ProviderHash } from '../ports/providerHash'
 import { UserInterface } from './userInterface'
 import {ID} from '../shared/id'
+import UserCase from '../shared/userCase'
 
-export default class LoginUser{
+type entry = {
+  email:string,
+  password: string
+}
+
+type exitInterface = {
+  user:UserInterface,
+  token:string
+}
+export default class LoginUser implements UserCase<entry, exitInterface>{
 
   constructor(
     private collection:UserCollection,
     private providerHash:ProviderHash
   ){}
 
-  async runner(email:string, password:string):Promise<UserInterface>{
+  async runner({email,password}:entry):Promise<exitInterface>{
 
     const user = await this.collection.searchUserWithMail(email)
 
@@ -27,8 +37,11 @@ export default class LoginUser{
     }
 
     return {
-      ...user,
-      pass:undefined
+      user:{
+        ...user,
+        pass:undefined
+      },
+      token:''
     }
   }
 }

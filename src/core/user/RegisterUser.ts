@@ -3,7 +3,12 @@ import { UserCollection } from './UserCollection'
 import { ProviderHash } from '../ports/providerHash'
 import { UserInterface } from './userInterface'
 import {ID} from '../shared/id'
-export default class RegisterUser{
+import UserCase from '../shared/userCase'
+
+export type entryInterface = {
+  name:string, email:string, password:string
+}
+export default class RegisterUser implements UserCase<entryInterface, UserInterface>{
 
 
   constructor(
@@ -11,7 +16,7 @@ export default class RegisterUser{
     private providerHash:ProviderHash
   ){}
 
-  async runner(name:string, email:string, password:string):Promise<UserInterface>{
+  async runner({email,name,password}:entryInterface):Promise<UserInterface>{
     const secretPassword = this.providerHash.cript(password)
 
     const userExist = await this.collection.searchUserWithMail(email)
